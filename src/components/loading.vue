@@ -7,10 +7,11 @@
 
 <script>
 export default {
+  name: 'loading',
 }
 </script>
 
-<style lang="less" scoped>
+<style scoped>
 .loading-mask{
   position: fixed;
   z-index: 999;

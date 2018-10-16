@@ -1,16 +1,32 @@
 <template>
   <div id="app">
-    
+    <loading v-if="isConnecting"/> 
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import loading from './comonents/loading.vue'
+import loading from './components/loading.vue'
+import mainPage from './components/mainPage.vue'
 
 export default {
   name: 'app',
   components: {
     loading,
+    mainPage,
+  },
+  data () {
+    return {
+      isConnecting: true,
+    }
+  },
+  methods: {
+    onDeviceReady () {
+      this.isConnecting = false
+    },
+  },
+  created () {
+    document.addEventListener('deviceready', this.onDeviceReady, false)
   }
 }
 </script>
